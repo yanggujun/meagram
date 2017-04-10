@@ -1,6 +1,6 @@
 # meagram
 
-in latin, "mea" means "my own" and "gram" means "writing"
+in Latin, "mea" means "my own" and in Greek "gram" means "things written"
 
 a web framework from scratch
 
