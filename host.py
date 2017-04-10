@@ -1,7 +1,14 @@
+import os.path
+
 def application(env, start_response):
-    start_response("200 OK", [("Content-Type", "text/html")])
+    response = "200 OK"
+    mime = "text/html"
+    # start_response("200 OK", [("Content-Type", "text/html")])
+
 
     path = env["PATH_INFO"]
+    method = env["REQUEST_METHOD"]
+     
     root = "./www"
     indexPage = "/index.html"
     fp = root
@@ -9,7 +16,32 @@ def application(env, start_response):
         fp = root + indexPage
     else:
         fp = root + path
-    hf = open(fp, 'r')
-    html = hf.read()
-    hf.close()
+
+    fileFound = os.path.exists(fp)
+
+    if (fileFound == True):
+        fn, ext = os.path.splitext(fp)
+        if (ext == ".js"):
+           mime = "application/javascript"
+        elif (ext == ".css"):
+            mime = "text/css"
+        elif (ext == ".xml"):
+            mime = "application/xml"
+        elif (ext == ".png"):
+            mime = "image/png"
+        elif (ext == ".jpeg"):
+            mime = "image/jpeg"
+        elif (ext == ".gif"):
+            mime = "image/gif"
+        elif (ext == ".json"):
+            mime = "application/json"
+
+    html = ""
+    if (fileFound == True):
+        hf = open(fp, 'r')
+        html = hf.read()
+        hf.close()
+
+    start_response(response, [("Content-Type", mime)])
+
     return html
