@@ -7,6 +7,15 @@
                     <li><a href="#">Hot</a></li>
                     <li><a href="#">All</a></li>
                     <li><a href="#">Random</a></li>
+                    <li class="dropdown" ng-controller="HeaderController as header">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Subscribes
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="sub in header.subscribes"><a href="#">{{sub.name}}</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -5,7 +5,7 @@ angular.module('meagram', ['ngRoute'])
             function($routeProvider) {
                 $routeProvider
                     .when('/', {
-                        templateUrl: 'main.html',
+                        templateUrl: 'html/main.html',
                         controller: 'MainController'
                     })
                     .otherwise({
@@ -15,4 +15,9 @@ angular.module('meagram', ['ngRoute'])
     .controller('MainController', ['$scope', '$http', 
             function($scope, $http) {
 
+            }])
+    .controller('HeaderController', ['$scope', '$http',
+            function($scope, $http) {
+                var header = this;
+                header.subscribes = [{'name': 'Programming'}, {'name': 'Soccer'}, {'name': 'GoT'}];
             }]);
