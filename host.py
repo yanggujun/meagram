@@ -1,10 +1,12 @@
 import os.path
 import uuid
 import json
+import falcon
 
 class Host:
     def __init__(self):
-        self.id = uuid.uuid1();
+        self.id = uuid.uuid1()
+        self.api = falcon.API()
 
     def __call__(self, env, start_response):
         response = "200 OK"
@@ -47,9 +49,12 @@ class Host:
             hf = open(fp, 'r')
             html = hf.read()
             hf.close()
-
+        
         start_response(response, [("Content-Type", mime)])
 
         return html
+
+    def add_route(self, uri_template, handler):
+        api.add_route(uri_template, handler)
 
 server = Host()
