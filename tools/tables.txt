@@ -1,0 +1,22 @@
+table user
+id (int pk)
+username (string)
+pass (string)
+email (string)
+phone (string)
+
+table article
+id (int pk)
+userid (int not null)
+title (string)
+content (clob)
+thumbup (int)
+thumbdown (int)
+
+table comment
+id (int pk)
+userid (int not null)
+articleid (int not null)
+sequenceid (int not null)
+thumbup (int)
+thumbdown (int)

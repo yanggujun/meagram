@@ -4,7 +4,10 @@ in Latin, "mea" means "my own" and in Greek "gram" means "things written"
 
 run with uwsgi
 
-    > uswgi --http-socket <ip:port> --wsgi-file host.py
+    > uwsgi --http-socket <ip:port> --wsgi-file host.py
+
+or 
+    > uwsgi --http :<port> -w <component>:<obj>
 
 configure nginx
 ```
