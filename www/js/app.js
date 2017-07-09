@@ -19,5 +19,12 @@ angular.module('meagram', ['ngRoute'])
     .controller('HeaderController', ['$scope', '$http',
             function($scope, $http) {
                 var header = this;
-                header.subscribes = [{'name': 'Programming'}, {'name': 'Soccer'}, {'name': 'GoT'}];
+                $http.get('/subscribes').then(function(response){
+                    var subs = response.data;
+                    header.subscribes = subs;
+                });
+            }])
+    .controller('LoginController', ['$scope', '$http',
+            function($scope, $http) {
+                this.success = true;
             }]);

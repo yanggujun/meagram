@@ -7,7 +7,7 @@ run with uwsgi
     > uwsgi --http-socket <ip:port> --wsgi-file host.py
 
 or 
-    > uwsgi --http :<port> -w <component>:<obj>
+    > uwsgi --http :<port> -w <file>:<obj>
 
 configure nginx
 ```

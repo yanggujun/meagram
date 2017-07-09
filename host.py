@@ -44,17 +44,18 @@ class Host:
             elif (ext == ".json"):
                 mime = "application/json"
 
-        html = ""
+        result = ""
         if (fileFound == True):
             hf = open(fp, 'r')
-            html = hf.read()
+            result = hf.read()
             hf.close()
+            start_response(response, [("Content-Type", mime)])
+        else:
+            result = self.api(env, start_response)
         
-        start_response(response, [("Content-Type", mime)])
 
-        return html
+        return result
 
     def add_route(self, uri_template, handler):
-        api.add_route(uri_template, handler)
+        self.api.add_route(uri_template, handler)
 
-server = Host()
