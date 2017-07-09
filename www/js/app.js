@@ -26,5 +26,12 @@ angular.module('meagram', ['ngRoute'])
             }])
     .controller('LoginController', ['$scope', '$http',
             function($scope, $http) {
-                this.success = true;
+                $scope.login = function()
+                {
+                    var logInfo = { 
+                        userName: $scope.userName,
+                        password: $scope.password
+                    };
+                    $http.post('/login', logInfo);
+                };
             }]);
